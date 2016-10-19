@@ -1,0 +1,12 @@
+D:\Advantech\2016\DQA_New Progrm Project\WISE_WebUI_MQTT_01Config\WISE-WebUI_MQTT_03G2C\obj\x86\Debug\WISE-WebUI_MQTT_03G2C.csprojResolveAssemblyReference.cache
+D:\Advantech\2016\DQA_New Progrm Project\WISE_WebUI_MQTT_01Config\WISE-WebUI_MQTT_03G2C\obj\x86\Debug\WISE_WebUI_MQTT_03G2C.Properties.Resources.resources
+D:\Advantech\2016\DQA_New Progrm Project\WISE_WebUI_MQTT_01Config\WISE-WebUI_MQTT_03G2C\obj\x86\Debug\WISE-WebUI_MQTT_03G2C.csproj.GenerateResource.Cache
+D:\Advantech\2016\DQA_New Progrm Project\WISE_WebUI_MQTT_01Config\WISE-WebUI_MQTT_03G2C\obj\x86\Debug\Form1.resources
+C:\Users\jammy.huang\Desktop\WISE_WebUI_MQTT_01Config\BuildDLL\WISE-WebUI_MQTT_03G2C.exe.config
+C:\Users\jammy.huang\Desktop\WISE_WebUI_MQTT_01Config\BuildDLL\WISE-WebUI_MQTT_03G2C.exe
+C:\Users\jammy.huang\Desktop\WISE_WebUI_MQTT_01Config\BuildDLL\WISE-WebUI_MQTT_03G2C.pdb
+C:\Users\jammy.huang\Desktop\WISE_WebUI_MQTT_01Config\WISE-WebUI_MQTT_03G2C\obj\x86\Debug\Form1.resources
+C:\Users\jammy.huang\Desktop\WISE_WebUI_MQTT_01Config\WISE-WebUI_MQTT_03G2C\obj\x86\Debug\WISE_WebUI_MQTT_03G2C.Properties.Resources.resources
+C:\Users\jammy.huang\Desktop\WISE_WebUI_MQTT_01Config\WISE-WebUI_MQTT_03G2C\obj\x86\Debug\WISE-WebUI_MQTT_03G2C.csproj.GenerateResource.Cache
+C:\Users\jammy.huang\Desktop\WISE_WebUI_MQTT_01Config\WISE-WebUI_MQTT_03G2C\obj\x86\Debug\WISE-WebUI_MQTT_03G2C.exe
+C:\Users\jammy.huang\Desktop\WISE_WebUI_MQTT_01Config\WISE-WebUI_MQTT_03G2C\obj\x86\Debug\WISE-WebUI_MQTT_03G2C.pdb

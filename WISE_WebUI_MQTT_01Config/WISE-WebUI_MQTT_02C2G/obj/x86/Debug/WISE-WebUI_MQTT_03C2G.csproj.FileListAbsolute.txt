@@ -1,0 +1,8 @@
+C:\Users\jammy.huang\Desktop\WISE_WebUI_MQTT_01Config\BuildDLL\WISE-WebUI_MQTT_03C2G.exe.config
+C:\Users\jammy.huang\Desktop\WISE_WebUI_MQTT_01Config\BuildDLL\WISE-WebUI_MQTT_03C2G.exe
+C:\Users\jammy.huang\Desktop\WISE_WebUI_MQTT_01Config\BuildDLL\WISE-WebUI_MQTT_03C2G.pdb
+C:\Users\jammy.huang\Desktop\WISE_WebUI_MQTT_01Config\WISE-WebUI_MQTT_02C2G\obj\x86\Debug\Form1.resources
+C:\Users\jammy.huang\Desktop\WISE_WebUI_MQTT_01Config\WISE-WebUI_MQTT_02C2G\obj\x86\Debug\WISE_WebUI_MQTT_03C2G.Properties.Resources.resources
+C:\Users\jammy.huang\Desktop\WISE_WebUI_MQTT_01Config\WISE-WebUI_MQTT_02C2G\obj\x86\Debug\WISE-WebUI_MQTT_03C2G.csproj.GenerateResource.Cache
+C:\Users\jammy.huang\Desktop\WISE_WebUI_MQTT_01Config\WISE-WebUI_MQTT_02C2G\obj\x86\Debug\WISE-WebUI_MQTT_03C2G.exe
+C:\Users\jammy.huang\Desktop\WISE_WebUI_MQTT_01Config\WISE-WebUI_MQTT_02C2G\obj\x86\Debug\WISE-WebUI_MQTT_03C2G.pdb

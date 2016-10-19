@@ -1,0 +1,18 @@
+C:\Users\jammy.huang\Desktop\WISE_WebUI_MQTT_01Config\WISE_WebUI_MQTT_01Config\bin\Debug\WISE_WebUI_MQTT_01Config.exe
+C:\Users\jammy.huang\Desktop\WISE_WebUI_MQTT_01Config\WISE_WebUI_MQTT_01Config\bin\Debug\WISE_WebUI_MQTT_01Config.pdb
+C:\Users\jammy.huang\Desktop\WISE_WebUI_MQTT_01Config\WISE_WebUI_MQTT_01Config\obj\x86\Debug\WISE_WebUI_MQTT_01Config.Properties.Resources.resources
+C:\Users\jammy.huang\Desktop\WISE_WebUI_MQTT_01Config\WISE_WebUI_MQTT_01Config\obj\x86\Debug\WISE_WebUI_MQTT_01Config.csproj.GenerateResource.Cache
+C:\Users\jammy.huang\Desktop\WISE_WebUI_MQTT_01Config\WISE_WebUI_MQTT_01Config\obj\x86\Debug\WISE_WebUI_MQTT_01Config.exe
+C:\Users\jammy.huang\Desktop\WISE_WebUI_MQTT_01Config\WISE_WebUI_MQTT_01Config\obj\x86\Debug\WISE_WebUI_MQTT_01Config.pdb
+D:\Advantech\2016\DQA_New Progrm Project\WISE_WebUI_MQTT_01Config\WISE_WebUI_MQTT_01Config\obj\x86\Debug\WISE_WebUI_MQTT_01Config.exe
+D:\Advantech\2016\DQA_New Progrm Project\WISE_WebUI_MQTT_01Config\WISE_WebUI_MQTT_01Config\obj\x86\Debug\WISE_WebUI_MQTT_01Config.pdb
+D:\Advantech\2016\DQA_New Progrm Project\WISE_WebUI_MQTT_01Config\WISE_WebUI_MQTT_01Config\obj\x86\Debug\Form1.resources
+D:\Advantech\2016\DQA_New Progrm Project\WISE_WebUI_MQTT_01Config\WISE_WebUI_MQTT_01Config\obj\x86\Debug\WISE_WebUI_MQTT_01Config.Properties.Resources.resources
+D:\Advantech\2016\DQA_New Progrm Project\WISE_WebUI_MQTT_01Config\WISE_WebUI_MQTT_01Config\obj\x86\Debug\WISE_WebUI_MQTT_01Config.csproj.GenerateResource.Cache
+D:\Advantech\2016\DQA_New Progrm Project\WISE_WebUI_MQTT_01Config\BuildDLL\WISE_WebUI_MQTT_01Config.exe.config
+D:\Advantech\2016\DQA_New Progrm Project\WISE_WebUI_MQTT_01Config\BuildDLL\WISE_WebUI_MQTT_01Config.exe
+D:\Advantech\2016\DQA_New Progrm Project\WISE_WebUI_MQTT_01Config\BuildDLL\WISE_WebUI_MQTT_01Config.pdb
+C:\Users\jammy.huang\Desktop\WISE_WebUI_MQTT_01Config\BuildDLL\WISE_WebUI_MQTT_01Config.exe.config
+C:\Users\jammy.huang\Desktop\WISE_WebUI_MQTT_01Config\BuildDLL\WISE_WebUI_MQTT_01Config.exe
+C:\Users\jammy.huang\Desktop\WISE_WebUI_MQTT_01Config\BuildDLL\WISE_WebUI_MQTT_01Config.pdb
+C:\Users\jammy.huang\Desktop\WISE_WebUI_MQTT_01Config\WISE_WebUI_MQTT_01Config\obj\x86\Debug\Form1.resources

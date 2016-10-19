@@ -1,0 +1,8 @@
+C:\Users\jammy.huang\Desktop\WISE_WebUI_MQTT_01Config\WISE-WebUI_MQTT_04DeleteProject\obj\x86\Debug\Form1.resources
+C:\Users\jammy.huang\Desktop\WISE_WebUI_MQTT_01Config\WISE-WebUI_MQTT_04DeleteProject\obj\x86\Debug\WISE_WebUI_MQTT_04DeleteProject.Properties.Resources.resources
+C:\Users\jammy.huang\Desktop\WISE_WebUI_MQTT_01Config\WISE-WebUI_MQTT_04DeleteProject\obj\x86\Debug\WISE-WebUI_MQTT_04DeleteProject.csproj.GenerateResource.Cache
+C:\Users\jammy.huang\Desktop\WISE_WebUI_MQTT_01Config\BuildDLL\WISE-WebUI_MQTT_04DeleteProject.exe.config
+C:\Users\jammy.huang\Desktop\WISE_WebUI_MQTT_01Config\BuildDLL\WISE-WebUI_MQTT_04DeleteProject.exe
+C:\Users\jammy.huang\Desktop\WISE_WebUI_MQTT_01Config\BuildDLL\WISE-WebUI_MQTT_04DeleteProject.pdb
+C:\Users\jammy.huang\Desktop\WISE_WebUI_MQTT_01Config\WISE-WebUI_MQTT_04DeleteProject\obj\x86\Debug\WISE-WebUI_MQTT_04DeleteProject.exe
+C:\Users\jammy.huang\Desktop\WISE_WebUI_MQTT_01Config\WISE-WebUI_MQTT_04DeleteProject\obj\x86\Debug\WISE-WebUI_MQTT_04DeleteProject.pdb
