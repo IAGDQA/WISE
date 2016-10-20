@@ -1,0 +1,11 @@
+C:\Users\Jammy\Desktop\WISE_RESTAPI_Main\WISE_RESTAPI_Main\bin\Debug\WISE_RESTAPI_Main.exe.config
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\WISE_RESTAPI_Main\bin\Debug\WISE_RESTAPI_Main.exe.config
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\BuildDLL\1_WISE_RESTAPI_Main.exe.config
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\BuildDLL\1_WISE_RESTAPI_Main.exe
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\BuildDLL\1_WISE_RESTAPI_Main.pdb
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\WISE_RESTAPI_Main\obj\x86\Debug\WISE_RESTAPI_Main.csprojResolveAssemblyReference.cache
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\WISE_RESTAPI_Main\obj\x86\Debug\Form1.resources
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\WISE_RESTAPI_Main\obj\x86\Debug\WISE_RESTAPI_Main.Properties.Resources.resources
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\WISE_RESTAPI_Main\obj\x86\Debug\WISE_RESTAPI_Main.csproj.GenerateResource.Cache
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\WISE_RESTAPI_Main\obj\x86\Debug\1_WISE_RESTAPI_Main.exe
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\WISE_RESTAPI_Main\obj\x86\Debug\1_WISE_RESTAPI_Main.pdb

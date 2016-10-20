@@ -1,0 +1,9 @@
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\BuildDLL\WISE_RESTAPI_SysLogDataMsg.exe.config
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\BuildDLL\WISE_RESTAPI_SysLogDataMsg.exe
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\BuildDLL\WISE_RESTAPI_SysLogDataMsg.pdb
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\WISE_RESTAPI_SysLogDataMsg\obj\x86\Debug\Form1.resources
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\WISE_RESTAPI_SysLogDataMsg\obj\x86\Debug\WISE_RESTAPI_SysLogDataMsg.Properties.Resources.resources
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\WISE_RESTAPI_SysLogDataMsg\obj\x86\Debug\WISE_RESTAPI_SysLogDataMsg.csproj.GenerateResource.Cache
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\WISE_RESTAPI_SysLogDataMsg\obj\x86\Debug\WISE_RESTAPI_SysLogDataMsg.exe
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\WISE_RESTAPI_SysLogDataMsg\obj\x86\Debug\WISE_RESTAPI_SysLogDataMsg.pdb
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\WISE_RESTAPI_SysLogDataMsg\obj\x86\Debug\WISE_RESTAPI_SysLogDataMsg.csprojResolveAssemblyReference.cache

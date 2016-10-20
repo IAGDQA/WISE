@@ -1,0 +1,9 @@
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\BuildDLL\WISE_RESTAPI_NETWORK_ADV.exe.config
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\BuildDLL\WISE_RESTAPI_NETWORK_ADV.exe
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\BuildDLL\WISE_RESTAPI_NETWORK_ADV.pdb
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\WISE_RESTAPI_NETWORK_ADV\obj\x86\Debug\WISE_RESTAPI_NETWORK_ADV.csprojResolveAssemblyReference.cache
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\WISE_RESTAPI_NETWORK_ADV\obj\x86\Debug\Form1.resources
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\WISE_RESTAPI_NETWORK_ADV\obj\x86\Debug\WISE_RESTAPI_NETWORK_ADV.Properties.Resources.resources
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\WISE_RESTAPI_NETWORK_ADV\obj\x86\Debug\WISE_RESTAPI_NETWORK_ADV.csproj.GenerateResource.Cache
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\WISE_RESTAPI_NETWORK_ADV\obj\x86\Debug\WISE_RESTAPI_NETWORK_ADV.exe
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\WISE_RESTAPI_NETWORK_ADV\obj\x86\Debug\WISE_RESTAPI_NETWORK_ADV.pdb

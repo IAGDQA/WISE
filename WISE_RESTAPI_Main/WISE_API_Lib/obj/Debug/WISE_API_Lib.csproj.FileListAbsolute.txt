@@ -1,0 +1,8 @@
+C:\Users\Jammy\Desktop\WISE_RESTAPI_Main\BuildDLL\WISE_API_Lib.dll
+C:\Users\Jammy\Desktop\WISE_RESTAPI_Main\BuildDLL\WISE_API_Lib.pdb
+C:\Users\Jammy\Desktop\WISE_RESTAPI_Main\WISE_API_Lib\obj\Debug\WISE_API_Lib.dll
+C:\Users\Jammy\Desktop\WISE_RESTAPI_Main\WISE_API_Lib\obj\Debug\WISE_API_Lib.pdb
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\BuildDLL\WISE_API_Lib.dll
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\BuildDLL\WISE_API_Lib.pdb
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\WISE_API_Lib\obj\Debug\WISE_API_Lib.dll
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\WISE_API_Lib\obj\Debug\WISE_API_Lib.pdb

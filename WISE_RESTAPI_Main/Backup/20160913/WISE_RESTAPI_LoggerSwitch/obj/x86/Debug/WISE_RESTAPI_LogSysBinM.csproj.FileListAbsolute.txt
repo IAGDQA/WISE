@@ -1,0 +1,2 @@
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\WISE_RESTAPI_LogSysBinM\bin\Debug\WISE_RESTAPI_LogSysBinM.exe.config
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\BuildDLL\WISE_RESTAPI_LogSysBinM.exe.config

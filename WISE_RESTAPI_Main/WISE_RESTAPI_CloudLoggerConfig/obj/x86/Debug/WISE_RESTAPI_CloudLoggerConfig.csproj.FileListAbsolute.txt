@@ -1,0 +1,9 @@
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\WISE_RESTAPI_CloudLoggerConfig\bin\Debug\WISE_RESTAPI_CloudLoggerConfig.exe.config
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\BuildDLL\WISE_RESTAPI_CloudLoggerConfig.exe.config
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\BuildDLL\WISE_RESTAPI_CloudLoggerConfig.exe
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\BuildDLL\WISE_RESTAPI_CloudLoggerConfig.pdb
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\WISE_RESTAPI_CloudLoggerConfig\obj\x86\Debug\Form1.resources
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\WISE_RESTAPI_CloudLoggerConfig\obj\x86\Debug\WISE_RESTAPI_CloudLoggerConfig.Properties.Resources.resources
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\WISE_RESTAPI_CloudLoggerConfig\obj\x86\Debug\WISE_RESTAPI_CloudLoggerConfig.csproj.GenerateResource.Cache
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\WISE_RESTAPI_CloudLoggerConfig\obj\x86\Debug\WISE_RESTAPI_CloudLoggerConfig.exe
+D:\Advantech\2016\DQA_New Progrm Project\WISE_RESTAPI_Main\WISE_RESTAPI_CloudLoggerConfig\obj\x86\Debug\WISE_RESTAPI_CloudLoggerConfig.pdb
