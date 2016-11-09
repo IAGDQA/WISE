@@ -40,7 +40,8 @@
     <Reference Include="AdvSeleniumAPI">
       <HintPath>..\BuildDLL\AdvSeleniumAPI.dll</HintPath>
     </Reference>
-    <Reference Include="HttpReqServiceLib">
+    <Reference Include="HttpReqServiceLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\BuildDLL\HttpReqServiceLib.dll</HintPath>
     </Reference>
     <Reference Include="iATesterAPI">
@@ -59,7 +60,8 @@
     <Reference Include="ThirdPartyToolControl">
       <HintPath>..\BuildDLL\ThirdPartyToolControl.dll</HintPath>
     </Reference>
-    <Reference Include="WISEATLib">
+    <Reference Include="WISEATLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\BuildDLL\WISEATLib.dll</HintPath>
     </Reference>
   </ItemGroup>

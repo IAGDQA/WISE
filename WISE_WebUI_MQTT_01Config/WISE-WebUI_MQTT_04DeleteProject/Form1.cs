@@ -10,8 +10,8 @@ using System.IO;
 
 using AdvWebUIAPI;
 using AutoWebUI_ClassLibrary;
-using Model;
-using Service;
+//using Model;
+//using Service;
 using iATester;
 
 public partial class Form1 : Form, iATester.iCom
@@ -21,9 +21,11 @@ public partial class Form1 : Form, iATester.iCom
     private DataGridViewCtrlAddDataRow m_DataGridViewCtrlAddDataRow;
     internal const int Max_Rows_Val = 65535;
 
-    IHttpReqService HttpReqService;
-    DeviceModel dev;
-    string AddressIP = "", devName = "", path = "", browser = ""; bool ConnectFlg = false;
+    //IHttpReqService HttpReqService;
+    //DeviceModel dev;
+    //string AddressIP = "", devName = "", path = "", browser = ""; bool ConnectFlg = false;
+    string filename = "WISE_MQTT_CONFIG.ini";
+    string folderPath = "";
 
     //iATester
     //Send Log data to iAtester
@@ -40,7 +42,7 @@ public partial class Form1 : Form, iATester.iCom
 
     private void Form1_Load(object sender, EventArgs e)
     {
-        HttpReqService = new HttpReqService();
+        //HttpReqService = new HttpReqService();
         //
         //dataGridView1.ColumnCount = 1;
         dataGridView1.ColumnHeadersVisible = true;
@@ -89,6 +91,7 @@ public partial class Form1 : Form, iATester.iCom
             MessageBox.Show(ex.ToString());
         }
         backgroundWorker1.WorkerSupportsCancellation = true;
+        GetParaFromFile();
     }
 
     private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -97,17 +100,18 @@ public partial class Form1 : Form, iATester.iCom
     }
     public void StartTest()//iATester
     {
-        //if (ExeConnectionDUT())
-        //{
-        //    eStatus(this, new StatusEventArgs(iStatus.Running));
-        //    WorkSteps();
-        //    eResult(this, new ResultEventArgs(iResult.Pass));
-        //}
-        //else
-        //    eResult(this, new ResultEventArgs(iResult.Fail));
-        ////
-        //eStatus(this, new StatusEventArgs(iStatus.Completion));
-        //Application.DoEvents();
+        GetParaFromFile();
+        if (ExeConnectionDUT())
+        {
+            eStatus(this, new StatusEventArgs(iStatus.Running));
+            WorkSteps();
+            eResult(this, new ResultEventArgs(iResult.Pass));
+        }
+        else
+            eResult(this, new ResultEventArgs(iResult.Fail));
+        //
+        eStatus(this, new StatusEventArgs(iStatus.Completion));
+        Application.DoEvents();
     }
 
     private void DataGridViewCtrlAddNewRow(DataGridViewRow i_Row)
@@ -128,31 +132,64 @@ public partial class Form1 : Form, iATester.iCom
 
     bool ExeConnectionDUT()
     {
-        GetPara();
-        if (AddressIP != "")
-        {
-            if (HttpReqService.HttpReqTCP_Connet(AddressIP))
-            {
-                ConnectFlg = true;
-                //ExeTimesCnt = 1;                    
-            }
-            else
-            {
-                ConnectFlg = false; PrintTitle("DUT Disconnected");
-                return false;
-            }
-        }
+        //AddressIP = textBox1.Text;
+        //if (AddressIP != "")
+        //{
+        //    if (HttpReqService.HttpReqTCP_Connet(AddressIP))
+        //    {
+        //        ConnectFlg = true;
+        //        //ExeTimesCnt = 1;                    
+        //    }
+        //    else
+        //    {
+        //        ConnectFlg = false; PrintTitle("DUT Disconnected");
+        //        return false;
+        //    }
+        //}
 
-        if (ConnectFlg)
-        {
-            dev = HttpReqService.GetDevice();
-            devName = dev.ModuleType;
-            PrintTitle("DUT [ " + devName + " ] is connecting");
-            //
-            if (devName == "") return false;
-        }
+        //if (ConnectFlg)
+        //{
+        //    dev = HttpReqService.GetDevice();
+        //    devName = dev.ModuleType;
+        //    PrintTitle("DUT [ " + devName + " ] is connecting");
+        //    SetParaToFile();
+        //    //
+        //    if (devName == "") return false;
+        //}
 
         return true;
+    }
+    void GetParaFromFile()
+    {
+        string sPath = System.Reflection.Assembly.GetAssembly(this.GetType()).Location;
+        char delimiterChars = '\\';
+        string[] words = sPath.Split(delimiterChars);
+        folderPath = "";
+        for (int i = 0; i < words.Length - 1; i++)
+        {
+            folderPath = folderPath + words[i] + "\\";
+        }
+
+        if (File.Exists(folderPath + "\\" + filename))
+        {
+            using (ExecuteIniClass IniFile = new ExecuteIniClass(Path.Combine(folderPath, filename)))
+            {
+                textBox1.Text = IniFile.getKeyValue("Dev", "IP");
+                txtCloudIp.Text = IniFile.getKeyValue("Dev", "Cloud");
+            }
+        }
+    }
+    void SetParaToFile()
+    {
+        if (!File.Exists(folderPath + "\\" + filename))
+            File.Create(folderPath + "\\" + filename);
+
+        //save para.
+        using (ExecuteIniClass IniFile = new ExecuteIniClass(Path.Combine(folderPath, filename)))
+        {
+            IniFile.setKeyValue("Dev", "IP", textBox1.Text);
+            IniFile.setKeyValue("Dev", "Cloud", txtCloudIp.Text);
+        }
     }
     private void button1_Click(object sender, EventArgs e)
     {
@@ -184,6 +221,7 @@ public partial class Form1 : Form, iATester.iCom
     {
         api = new AdvSeleniumAPI("IE", Application.StartupPath);
         System.Threading.Thread.Sleep(1000);
+        StopNode();
         DeleteCloudProject();
 
         CloseBrowserBlock();
@@ -259,25 +297,6 @@ public partial class Form1 : Form, iATester.iCom
 
 
     }
-    string filename = "WISE_WEB_CONFIG.ini";
-    void GetPara()
-    {
-        //create new
-        if (File.Exists(Application.StartupPath + "\\" + filename))
-        {
-            using (ExecuteIniClass IniFile = new ExecuteIniClass(Path.Combine(Application.StartupPath, filename)))
-            {
-                AddressIP = IniFile.getKeyValue("Dev", "IP");
-                path = IniFile.getKeyValue("Dev", "Path");
-                browser = IniFile.getKeyValue("Dev", "Browser");
-                PrintTitle("Get Dev: [IP] " + AddressIP
-                           + " ; [path] " + path);
-            }
-        }
-        else
-            PrintTitle("Get file fail...");
-
-    }
 
     //
     void CloseBrowserBlock()
@@ -285,7 +304,51 @@ public partial class Form1 : Form, iATester.iCom
         PrintTitle("CloseBrowser");
         if (api != null) api.Quit();
     }
+    private void StopNode()
+    {
+        PrintTitle("StopNode");
+        api.LinkWebUI(txtCloudIp.Text + "/broadWeb/bwconfig.asp?username=admin");
+        api.ById("userField").Enter("").Submit().Exe();
+        PrintStep();
 
+        string sProjectName = "WISE%2DDQA"; // WISE-DQA
+        api.ByXpath("//a[contains(@href, '/broadWeb/bwMain.asp') and contains(@href, 'ProjName=" + sProjectName + "')]").Click();
+        PrintStep();
+
+        api.SwitchToCurWindow(0);
+        api.SwitchToFrame("rightFrame", 0);
+        api.ByXpath("//tr[2]/td/a[6]/font").Click();    // Stop kernel
+        System.Threading.Thread.Sleep(2000);
+
+        string main; object subobj;
+        api.GetWinHandle(out main, out subobj);
+        IEnumerator<String> windowIterator = (IEnumerator<String>)subobj;
+
+        List<string> items = new List<string>();
+        while (windowIterator.MoveNext())
+            items.Add(windowIterator.Current);
+
+        if (main != items[1])
+        {
+            api.SwitchToWinHandle(items[1]);
+        }
+        else
+        {
+            api.SwitchToWinHandle(items[0]);
+        }
+        //if (bRedundancyTest == true)
+        //{
+        //    Thread.Sleep(500);
+        //    api.ByXpath("(//input[@name='SECONDARY_CONTROL'])[2]").Click();
+        //    Thread.Sleep(1000);
+        //}
+        api.ByName("submit").Enter("").Submit().Exe();
+
+        System.Threading.Thread.Sleep(30000);    // Wait 30s for Stop kernel finish
+        api.Close();
+        api.SwitchToWinHandle(main);        // switch back to original window
+        PrintStep();
+    }
     private void DeleteCloudProject()   // Delete Cloud Project
     {
         PrintTitle("DeleteCloudProject");

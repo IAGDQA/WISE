@@ -28,7 +28,7 @@ public partial class Form1 : Form, iATester.iCom
     internal const int Max_Rows_Val = 65535;
 
     SysData GetDataArry = new SysData();
-    SysData ChangeDataArry = new SysData();//change description content
+    //SysData ChangeDataArry = new SysData();//change description content
     bool changeFlg = false;
     wResult ExeRes;
     //iATester
@@ -252,13 +252,13 @@ public partial class Form1 : Form, iATester.iCom
         int errorCnt = 0; changeFlg = false;
         Print(new wResult() { Des = "VerifyItems" });
         bool chk = false;
-        if (GetDataArry.IWId != ChangeDataArry.IWId) { chk = true; errorCnt++; }
+        if (GetDataArry.IWId == "" || GetDataArry.IWId == null) { chk = true; errorCnt++; }
         Print(new wResult() { Des = "IWId check [" + GetDataArry.IWId + "]", Res = chk ? ExeCaseRes.Fail : ExeCaseRes.Pass });
         chk = false;
-        if (GetDataArry.AMac != ChangeDataArry.AMac) { chk = true; errorCnt++; }
+        //if (GetDataArry.AMac == "" || GetDataArry.AMac == null) { chk = true; errorCnt++; }
         Print(new wResult() { Des = "AMac check [" + GetDataArry.AMac + "]", Res = chk ? ExeCaseRes.Fail : ExeCaseRes.Pass });
         chk = false;
-        if (GetDataArry.Rssi != ChangeDataArry.Rssi) { chk = true; errorCnt++; }
+        if (GetDataArry.Rssi == 0) { chk = true; errorCnt++; }
         Print(new wResult() { Des = "Rssi check [" + GetDataArry.Rssi + "]", Res = chk ? ExeCaseRes.Fail : ExeCaseRes.Pass });
 
         //Return the test result
@@ -274,8 +274,9 @@ public partial class Form1 : Form, iATester.iCom
     {
         try
         {
-            ChangeDataArry = GetDataArry;
-            
+            GetDataArry.Rssi = data.Rssi;
+            GetDataArry.IWId = data.IWId;
+            GetDataArry.AMac = data.AMac;
         }
         catch (Exception e)
         {

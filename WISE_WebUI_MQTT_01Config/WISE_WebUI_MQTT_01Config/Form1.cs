@@ -24,7 +24,10 @@ public partial class Form1 : Form, iATester.iCom
 
     IHttpReqService HttpReqService;
     DeviceModel dev;
+    int errorCnt = 0;
     string AddressIP = "", devName = "", path = "", browser = ""; bool ConnectFlg = false;
+    string filename = "WISE_MQTT_CONFIG.ini";
+    string folderPath = "";
     int ai_point = 0, di_point = 0, do_point = 0;
     cThirdPartyToolControl tpc = new cThirdPartyToolControl();
 
@@ -92,6 +95,7 @@ public partial class Form1 : Form, iATester.iCom
             MessageBox.Show(ex.ToString());
         }
         backgroundWorker1.WorkerSupportsCancellation = true;
+        GetParaFromFile();
     }
 
     private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -100,17 +104,21 @@ public partial class Form1 : Form, iATester.iCom
     }
     public void StartTest()//iATester
     {
-        //if (ExeConnectionDUT())
-        //{
-        //    eStatus(this, new StatusEventArgs(iStatus.Running));
-        //    WorkSteps();
-        //    eResult(this, new ResultEventArgs(iResult.Pass));
-        //}
-        //else
-        //    eResult(this, new ResultEventArgs(iResult.Fail));
-        ////
-        //eStatus(this, new StatusEventArgs(iStatus.Completion));
-        //Application.DoEvents();
+        GetParaFromFile();
+        if (ExeConnectionDUT())
+        {
+            eStatus(this, new StatusEventArgs(iStatus.Running));
+            WorkSteps();
+            if (errorCnt > 0)
+                eResult(this, new ResultEventArgs(iResult.Fail));
+            else
+                eResult(this, new ResultEventArgs(iResult.Pass));
+        }
+        else
+            eResult(this, new ResultEventArgs(iResult.Fail));
+        //
+        eStatus(this, new StatusEventArgs(iStatus.Completion));
+        Application.DoEvents();
     }
 
     private void DataGridViewCtrlAddNewRow(DataGridViewRow i_Row)
@@ -131,7 +139,7 @@ public partial class Form1 : Form, iATester.iCom
 
     bool ExeConnectionDUT()
     {
-        GetPara();
+        AddressIP = textBox1.Text;
         if (AddressIP != "")
         {
             if (HttpReqService.HttpReqTCP_Connet(AddressIP))
@@ -151,12 +159,45 @@ public partial class Form1 : Form, iATester.iCom
             dev = HttpReqService.GetDevice();
             devName = dev.ModuleType;
             PrintTitle("DUT [ " + devName + " ] is connecting");
+            SetParaToFile();
             //
             if (devName == "") return false;
             CheckModPoint();
         }
 
         return true;
+    }
+    void GetParaFromFile()
+    {
+        string sPath = System.Reflection.Assembly.GetAssembly(this.GetType()).Location;
+        char delimiterChars = '\\';
+        string[] words = sPath.Split(delimiterChars);
+        folderPath = "";
+        for (int i = 0; i < words.Length - 1; i++)
+        {
+            folderPath = folderPath + words[i] + "\\";
+        }
+
+        if (File.Exists(folderPath + "\\" + filename))
+        {
+            using (ExecuteIniClass IniFile = new ExecuteIniClass(Path.Combine(folderPath, filename)))
+            {
+                textBox1.Text = IniFile.getKeyValue("Dev", "IP");
+                txtCloudIp.Text = IniFile.getKeyValue("Dev", "Cloud");
+            }
+        }
+    }
+    void SetParaToFile()
+    {
+        if (!File.Exists(folderPath + "\\" + filename))
+            File.Create(folderPath + "\\" + filename);
+
+        //save para.
+        using (ExecuteIniClass IniFile = new ExecuteIniClass(Path.Combine(folderPath, filename)))
+        {
+            IniFile.setKeyValue("Dev", "IP", textBox1.Text);
+            IniFile.setKeyValue("Dev", "Cloud", txtCloudIp.Text);
+        }
     }
     private void button1_Click(object sender, EventArgs e)
     {
@@ -186,6 +227,7 @@ public partial class Form1 : Form, iATester.iCom
 
     private void WorkSteps()
     {
+        errorCnt = 0;
         api = new AdvSeleniumAPI("IE", Application.StartupPath);
         System.Threading.Thread.Sleep(1000);
         LinkWebBlock();
@@ -227,7 +269,6 @@ public partial class Form1 : Form, iATester.iCom
 
         m_DataGridViewCtrlAddDataRow(dgvRow);
     }
-
     void PrintStep()
     {
         DataGridViewRow dgvRow;
@@ -240,7 +281,10 @@ public partial class Form1 : Form, iATester.iCom
             //
             dgvRow = new DataGridViewRow();
             if (_res.Res == "fail")
+            {
+                errorCnt++;
                 dgvRow.DefaultCellStyle.ForeColor = Color.Red;
+            }
             dgvCell = new DataGridViewTextBoxCell(); //Column Time
             //
             if (_res == null) continue;
@@ -267,28 +311,6 @@ public partial class Form1 : Form, iATester.iCom
 
             m_DataGridViewCtrlAddDataRow(dgvRow);
         }
-
-
-
-    }
-    string filename = "WISE_WEB_CONFIG.ini";
-    void GetPara()
-    {
-        //create new
-        if (File.Exists(Application.StartupPath + "\\" + filename))
-        {
-            using (ExecuteIniClass IniFile = new ExecuteIniClass(Path.Combine(Application.StartupPath, filename)))
-            {
-                AddressIP = IniFile.getKeyValue("Dev", "IP");
-                path = IniFile.getKeyValue("Dev", "Path");
-                browser = IniFile.getKeyValue("Dev", "Browser");
-                PrintTitle("Get Dev: [IP] " + AddressIP
-                           + " ; [path] " + path);
-            }
-        }
-        else
-            PrintTitle("Get file fail...");
-
     }
 
     //
@@ -300,7 +322,7 @@ public partial class Form1 : Form, iATester.iCom
 
     void LinkWebBlock()
     {
-        api.LinkWebUI("http://" + AddressIP);
+        api.LinkWebUI("http://" + AddressIP + "/config");
         if (browser == "FireFox")
         { System.Threading.Thread.Sleep(1000); api.ZoomWebUI(); }
         System.Threading.Thread.Sleep(1000);
@@ -335,7 +357,7 @@ public partial class Form1 : Form, iATester.iCom
         api.Wait(1000);
         api.Enter(txtCloudIp.Text).Clear().ById("Nm").Exe();
         api.Enter("WISE-DQA").Clear().ById("PNm").Exe();
-        api.Enter(dev.ModuleType + "-AUTOTEST").Clear().ById("NNm").Exe();
+        api.Enter(RenameModname() + "-AUTOTEST").Clear().ById("NNm").Exe();
         api.Enter("60").Clear().ById("HbF").Exe();
         api.Enter("80").Clear().ById("PWeb").Exe();
         api.Enter("admin").Clear().ById("Pu").Exe();
@@ -405,6 +427,7 @@ public partial class Form1 : Form, iATester.iCom
 
             api.ByCss("#doConfigBaseForm > div.panel-footer.clearfix > div.pull-right > #btnSubmit")
                         .ClickAndWait(1000);
+            PrintStep();
         }
         PrintStep();
     }
@@ -426,6 +449,7 @@ public partial class Form1 : Form, iATester.iCom
 
             api.ByCss("#relayConfigBaseForm > div.panel-footer.clearfix > div.pull-right > #btnSubmit")
                         .ClickAndWait(1000);
+            PrintStep();
         }
         PrintStep();
     }
@@ -442,6 +466,7 @@ public partial class Form1 : Form, iATester.iCom
                 if (api.ById("inpEn_" + i.ToString()).GetAttr("checked") == "false")
                     api.ById("inpEn_" + i.ToString()).Click();
                 api.SelectTxt("AI").ByCss("#selMd_" + i.ToString()).Exe();
+                PrintStep();
             }
             api.ById("btnUIConfig").ClickAndWait(1000);
             PrintStep();
@@ -499,7 +524,8 @@ public partial class Form1 : Form, iATester.iCom
         {
             ai_point = 2; di_point = 2; do_point = 2;
         }
-        else if (dev.ModuleType.ToUpper() == "WISE-4012")
+        else if (dev.ModuleType.ToUpper() == "WISE-4012"
+            || dev.ModuleType.ToUpper() == "WISE-4010/LAN")
         {
             ai_point = 4; di_point = 0; do_point = 2;
         }
@@ -528,7 +554,24 @@ public partial class Form1 : Form, iATester.iCom
         else
             api.ByXpath("(//a[contains(text(),'Configuration')])[2]").ClickAndWait(1000);
     }
+     
+    string RenameModname()
+    {
+        string _name = dev.ModuleType;
+        if (dev.ModuleType.ToUpper() == "WISE-4050/LAN"
+            || dev.ModuleType.ToUpper() == "WISE-4060/LAN"
+            || dev.ModuleType.ToUpper() == "WISE-4010/LAN")
+        {
+            char delimiterChars = '/'; 
+            string[] words = _name.Split(delimiterChars);
+            _name = "";
+            foreach (string _w in words)
+                _name = _name + _w;
+        }
+        return _name;
+    }
 
+    //==============================================================//
     private void ViewandSaveCloudTagInfo()
     {
         PrintTitle("Start WA View");
@@ -556,17 +599,16 @@ public partial class Form1 : Form, iATester.iCom
 
         System.Threading.Thread.Sleep(1000);
         // Control browser
-        //string sModuleType = "WISE-4012";
         PrintTitle("Control browser");
-        int iIE_Handl = tpc.F_FindWindow("IEFrame", "Node : " + dev.ModuleType + "-AUTOTEST - main:untitled");   // 注意是CTestSCADA而不是TestSCADA!! Jammy這邊要改!!
+        int iIE_Handl = tpc.F_FindWindow("IEFrame", "Node : " + RenameModname() + "-AUTOTEST - main:untitled");   // 注意是CTestSCADA而不是TestSCADA!! Jammy這邊要改!!
         int iIE_Handl_2 = tpc.F_FindWindowEx(iIE_Handl, 0, "Frame Tab", "");
-        int iIE_Handl_3 = tpc.F_FindWindowEx(iIE_Handl_2, 0, "TabWindowClass", "Node : " + dev.ModuleType + "-AUTOTEST - Internet Explorer");    // 注意是CTestSCADA而不是TestSCADA  Jammy這邊要改!!
+        int iIE_Handl_3 = tpc.F_FindWindowEx(iIE_Handl_2, 0, "TabWindowClass", "Node : " + RenameModname() + "-AUTOTEST - Internet Explorer");    // 注意是CTestSCADA而不是TestSCADA  Jammy這邊要改!!
         int iIE_Handl_4 = tpc.F_FindWindowEx(iIE_Handl_3, 0, "Shell DocObject View", "");
         int iIE_Handl_5 = tpc.F_FindWindowEx(iIE_Handl_4, 0, "Internet Explorer_Server", "");
         int iIE_Handl_6 = tpc.F_FindWindowEx(iIE_Handl_5, 0, "AfxOleControl42s", "");
         int iIE_Handl_7 = tpc.F_FindWindowEx(iIE_Handl_6, 0, "AfxWnd42s", "");
         int iWA_MainPage = tpc.F_FindWindowEx(iIE_Handl_7, 0, "ActXBroadWinBwviewWClass", "Advantech View 001 - main:untitled");
-
+        PrintTitle("Get handle is ["+ iWA_MainPage.ToString() + "].");
         if (iWA_MainPage > 0)
         {
             System.Threading.Thread.Sleep(5000);

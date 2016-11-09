@@ -272,8 +272,8 @@ public partial class Form1 : Form, iATester.iCom
     private void GetNetConfigRequest()
     {
         Print(new wResult() { Des = "GetNetConfigRequest" });
-        dataHld.SavePara(Application.StartupPath, textBox1.Text);
-        Device.IPAddress = textBox1.Text;
+        //dataHld.SavePara(Application.StartupPath, textBox1.Text);
+        //Device.IPAddress = textBox1.Text;
         servAct = ServiceAction.GetNetConfig;
         m_HttpRequest.SendGETRequest(Device.Account, Device.Password,
                                         "http://" + Device.IPAddress + "/log_upload");
@@ -342,10 +342,10 @@ public partial class Form1 : Form, iATester.iCom
         if (GetDataArry.SItm != ChangeDataArry.SItm) { chk = true; errorCnt++; }
         Print(new wResult() { Des = "SItm   check [" + GetDataArry.SItm + "]", Res = chk ? ExeCaseRes.Fail : ExeCaseRes.Pass });
         chk = false;
-        if (GetDataArry.DTag != ChangeDataArry.DTag) { chk = true; errorCnt++; }
+        if (GetDataArry.DTag != ChangeDataArry.DTag || GetDataArry.DTag == null) { chk = true; errorCnt++; }
         Print(new wResult() { Des = "DTag   check [" + GetDataArry.DTag + "]", Res = chk ? ExeCaseRes.Fail : ExeCaseRes.Pass });
         chk = false;
-        if (GetDataArry.STag != ChangeDataArry.STag) { chk = true; errorCnt++; }
+        if (GetDataArry.STag != ChangeDataArry.STag || GetDataArry.STag == null) { chk = true; errorCnt++; }
         Print(new wResult() { Des = "STag   check [" + GetDataArry.STag + "]", Res = chk ? ExeCaseRes.Fail : ExeCaseRes.Pass });
 
         //Return the test result

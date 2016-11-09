@@ -260,8 +260,9 @@ public partial class Form1 : Form, iATester.iCom
     private void GetNetConfigRequest()
     {
         Print(new wResult() { Des = "GetNetConfigRequest" });
-        dataHld.SavePara(Application.StartupPath, textBox1.Text);
-        Device.IPAddress = textBox1.Text;
+        //dataHld.SavePara(Application.StartupPath, textBox1.Text);
+        //Device.IPAddress = textBox1.Text;
+        Device.IPAddress = textBox1.Text = dataHld.GetPara(Application.StartupPath);
         servAct = ServiceAction.GetNetConfig;
         m_HttpRequest.SendGETRequest(Device.Account, Device.Password,
                                         "http://" + Device.IPAddress + "/logsys_output");

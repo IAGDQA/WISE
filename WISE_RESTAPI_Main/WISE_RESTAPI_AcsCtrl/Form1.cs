@@ -27,11 +27,12 @@ public partial class Form1 : Form, iATester.iCom
     private DataGridViewCtrlAddDataRow m_DataGridViewCtrlAddDataRow;
     internal const int Max_Rows_Val = 65535;
 
-    SysData[] GetDataArry = new SysData[8];
-    SysChgData[] ChangeDataArry = new SysChgData[8];//change description content
+    Acc[] GetDataArry = new Acc[8];
+    //SysChgData[] ChangeDataArry = new SysChgData[8];//change description content
     bool changeFlg = false;
     wResult ExeRes;
     int indx = 0;
+    string[] IpTable = new string[8];
 
     //iATester
     //Send Log data to iAtester
@@ -47,7 +48,7 @@ public partial class Form1 : Form, iATester.iCom
         InitializeComponent();
 
         GetDataArry.Initialize();
-        ChangeDataArry.Initialize();
+        //ChangeDataArry.Initialize();
     }
 
     private void Form1_Load(object sender, EventArgs e)
@@ -144,22 +145,23 @@ public partial class Form1 : Form, iATester.iCom
             }
         }
         //input
+        //foreach (var item in ipList)
+        //{
+        //    ChangeDataArry[indx] = new SysChgData() { En = 1, Adr = (string)item };
+        //    indx++;
+        //}
+        //for (int i = indx; i < 8; i++)
+        //{
+        //    ChangeDataArry[i] = new SysChgData() { En = 1, Adr = "192.168.1." + (i + 1).ToString() };
+        //}
+        IpTable.Initialize();
         foreach (var item in ipList)
         {
-            ChangeDataArry[indx] = new SysChgData() { En = 1, Adr = (string)item };
+            IpTable[indx] = (string)item;
             indx++;
         }
         for (int i = indx; i < 8; i++)
-        {
-            ChangeDataArry[i] = new SysChgData() { En = 1, Adr = "192.168.1." + (i + 1).ToString() };
-        }
-
-
-
-
-
-        //debug
-        //GetNetConfigRequest();
+            IpTable[i] = "192.168.1." + (i + 1).ToString();
     }
     public void StartTest()//iATester
     {
@@ -167,20 +169,6 @@ public partial class Form1 : Form, iATester.iCom
         indx = 0;
         eStatus(this, new StatusEventArgs(iStatus.Running));
         GetNetConfigRequest();
-
-
-
-        //if (ExeConnectionDUT())
-        //{
-        //    eStatus(this, new StatusEventArgs(iStatus.Running));
-        //    WorkSteps();
-        //    eResult(this, new ResultEventArgs(iResult.Pass));
-        //}
-        //else
-        //    eResult(this, new ResultEventArgs(iResult.Fail));
-        ////
-        //eStatus(this, new StatusEventArgs(iStatus.Completion));
-        //Application.DoEvents();
     }
 
     private string GetURL(string ip, int port, string requestUri)
@@ -216,7 +204,7 @@ public partial class Form1 : Form, iATester.iCom
         switch (servAct)
         {
             case ServiceAction.GetNetConfig:
-                var Obj01 = AdvantechHttpWebUtility.ParserJsonToObj<SysData>(rawData);
+                var Obj01 = AdvantechHttpWebUtility.ParserJsonToObj<Acc>(rawData);
                 UpdateDevUIStatus(Obj01);
                 //
                 ExeRes.Res = ExeCaseRes.Pass;Print(ExeRes);
@@ -225,7 +213,7 @@ public partial class Form1 : Form, iATester.iCom
             case ServiceAction.PatchSysInfo:
                 break;
             case ServiceAction.GetNetConfig_ag:
-                var Obj03 = AdvantechHttpWebUtility.ParserJsonToObj<SysData>(rawData);
+                var Obj03 = AdvantechHttpWebUtility.ParserJsonToObj<Acc>(rawData);
                 UpdateDevUIStatus(Obj03);
                 //
                 ExeRes.Res = ExeCaseRes.Pass; Print(ExeRes);
@@ -273,6 +261,8 @@ public partial class Form1 : Form, iATester.iCom
     private void button1_Click(object sender, EventArgs e)
     {
         indx = 0;
+        dataHld.SavePara(Application.StartupPath, textBox1.Text);
+        Device.IPAddress = textBox1.Text;
         GetNetConfigRequest();
     }
 
@@ -310,8 +300,8 @@ public partial class Form1 : Form, iATester.iCom
     private void GetNetConfigRequest()
     {
         Print(new wResult() { Des = "GetNetConfigRequest" });
-        dataHld.SavePara(Application.StartupPath, textBox1.Text);
-        Device.IPAddress = textBox1.Text;
+        //dataHld.SavePara(Application.StartupPath, textBox1.Text);
+        //Device.IPAddress = textBox1.Text;
         servAct = ServiceAction.GetNetConfig;
 
         int temp_idx = indx > 14 ? indx - 16 : indx;
@@ -339,7 +329,8 @@ public partial class Form1 : Form, iATester.iCom
         int temp_idx = indx - 8;
 
         JavaScriptSerializer serializer = new JavaScriptSerializer();
-        string sz_Jsonify = serializer.Serialize(ChangeDataArry[temp_idx]);
+        //string sz_Jsonify = serializer.Serialize(ChangeDataArry[temp_idx]);
+        string sz_Jsonify = serializer.Serialize(new SysChgData { En = 1, Adr = IpTable[temp_idx] });
 
         m_HttpRequest.SendPATCHRequest(Device.Account, Device.Password, GetURL(Device.IPAddress, Device.Port
                                     , WISE_RESTFUL_URI.accessctrl.ToString() + "/idx_" + temp_idx.ToString()), sz_Jsonify);
@@ -362,7 +353,7 @@ public partial class Form1 : Form, iATester.iCom
         for (int i = 0; i < 8; i++)
         {
             bool chk = false;
-            if (GetDataArry[i].En != ChangeDataArry[i].En) { chk = true; errorCnt++; }
+            if (GetDataArry[i].En != 1) { chk = true; errorCnt++; }
             Print(new wResult()
             {
                 Des = "En check by idx[" + i.ToString() + "]"
@@ -370,7 +361,7 @@ public partial class Form1 : Form, iATester.iCom
                 Res = chk ? ExeCaseRes.Fail : ExeCaseRes.Pass
             });
             chk = false;
-            if (GetDataArry[i].Adr != ChangeDataArry[i].Adr) { chk = true; errorCnt++; }
+            if (GetDataArry[i].Adr != IpTable[i] || GetDataArry[i].Adr == null) { chk = true; errorCnt++; }
             Print(new wResult()
             {
                 Des = "Adr check by idx[" + i.ToString() + "]"
@@ -396,12 +387,12 @@ public partial class Form1 : Form, iATester.iCom
     }
 
     #region ---- Update UI ----
-    private void UpdateDevUIStatus(SysData data)
+    private void UpdateDevUIStatus(Acc data)
     {
         try
         {
             int temp_idx = indx > 15 ? indx - 16 : indx;
-            GetDataArry[temp_idx] = new SysData();
+            GetDataArry[temp_idx] = new Acc();
             GetDataArry[temp_idx].En = data.En;
             GetDataArry[temp_idx].Adr = data.Adr;            
         }
@@ -415,8 +406,7 @@ public partial class Form1 : Form, iATester.iCom
         }
     }
     #endregion
-
-    public class SysData
+    public class Acc
     {
         public int Idx { get; set; }
         public int En { get; set; }
@@ -427,7 +417,7 @@ public partial class Form1 : Form, iATester.iCom
     {
         public int En { get; set; }
         public string Adr { get; set; }
-    }    
+    }
 
     public enum ServiceAction
     {

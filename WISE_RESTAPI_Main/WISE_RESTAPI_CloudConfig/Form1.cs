@@ -266,8 +266,8 @@ public partial class Form1 : Form, iATester.iCom
     private void GetNetConfigRequest()
     {
         Print(new wResult() { Des = "GetNetConfigRequest" });
-        dataHld.SavePara(Application.StartupPath, textBox1.Text);
-        Device.IPAddress = textBox1.Text;
+        //dataHld.SavePara(Application.StartupPath, textBox1.Text);
+        //Device.IPAddress = textBox1.Text;
         servAct = ServiceAction.GetNetConfig;
         m_HttpRequest.SendGETRequest(Device.Account, Device.Password,
                                         "http://" + Device.IPAddress + "/cloud_config");
@@ -321,25 +321,25 @@ public partial class Form1 : Form, iATester.iCom
         if (GetDataArry.SSLEn != ChangeDataArry.SSLEn) { chk = true; errorCnt++; }
         Print(new wResult() { Des = "SSLEn check [" + GetDataArry.SSLEn + "]", Res = chk ? ExeCaseRes.Fail : ExeCaseRes.Pass });
         chk = false;
-        if (GetDataArry.IP != ChangeDataArry.IP) { chk = true; errorCnt++; }
+        if (GetDataArry.IP != ChangeDataArry.IP || GetDataArry.IP == null) { chk = true; errorCnt++; }
         Print(new wResult() { Des = "IP  check [" + GetDataArry.IP + "]", Res = chk ? ExeCaseRes.Fail : ExeCaseRes.Pass });
         chk = false;
         if (GetDataArry.Pauth != ChangeDataArry.Pauth) { chk = true; errorCnt++; }
         Print(new wResult() { Des = "Pauth check [" + GetDataArry.Pauth + "]", Res = chk ? ExeCaseRes.Fail : ExeCaseRes.Pass });
         chk = false;
-        if (GetDataArry.Pu != ChangeDataArry.Pu) { chk = true; errorCnt++; }
+        if (GetDataArry.Pu != ChangeDataArry.Pu || GetDataArry.Pu == null) { chk = true; errorCnt++; }
         Print(new wResult() { Des = "Pu check [" + GetDataArry.Pu + "]", Res = chk ? ExeCaseRes.Fail : ExeCaseRes.Pass });
         chk = false;
-        if (GetDataArry.Pw != ChangeDataArry.Pw) { chk = true; errorCnt++; }
+        if (GetDataArry.Pw != ChangeDataArry.Pw || GetDataArry.Pw == null) { chk = true; errorCnt++; }
         Print(new wResult() { Des = "Pw check [" + GetDataArry.Pw + "]", Res = chk ? ExeCaseRes.Fail : ExeCaseRes.Pass });
         chk = false;
-        if (GetDataArry.Uurl != ChangeDataArry.Uurl) { chk = true; errorCnt++; }
+        if (GetDataArry.Uurl != ChangeDataArry.Uurl || GetDataArry.Uurl == null) { chk = true; errorCnt++; }
         Print(new wResult() { Des = "Uurl check [" + GetDataArry.Uurl + "]", Res = chk ? ExeCaseRes.Fail : ExeCaseRes.Pass });
         chk = false;
-        if (GetDataArry.Durl != ChangeDataArry.Durl) { chk = true; errorCnt++; }
+        if (GetDataArry.Durl != ChangeDataArry.Durl || GetDataArry.Durl == null) { chk = true; errorCnt++; }
         Print(new wResult() { Des = "Durl check [" + GetDataArry.Durl + "]", Res = chk ? ExeCaseRes.Fail : ExeCaseRes.Pass });
         chk = false;
-        if (GetDataArry.Surl != ChangeDataArry.Surl) { chk = true; errorCnt++; }
+        if (GetDataArry.Surl != ChangeDataArry.Surl || GetDataArry.Surl == null) { chk = true; errorCnt++; }
         Print(new wResult() { Des = "Surl check [" + GetDataArry.Surl + "]", Res = chk ? ExeCaseRes.Fail : ExeCaseRes.Pass });
 
         //Return the test result

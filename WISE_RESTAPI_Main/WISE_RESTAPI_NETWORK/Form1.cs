@@ -29,6 +29,7 @@ public partial class Form1 : Form, iATester.iCom
 
     SysData GetDataArry = new SysData();
     SysChgData ChangeDataArry = new SysChgData();//change description content
+    SysChgData ChangeInfraDataArry = new SysChgData();//When in infra mode
     bool changeFlg = false;
     wResult ExeRes;
     //iATester
@@ -42,14 +43,6 @@ public partial class Form1 : Form, iATester.iCom
     public Form1()
     {
         InitializeComponent();
-
-        ChangeDataArry = new SysChgData()
-        {
-            DHCP = 1,
-            IP = "192.168.0.68",
-            Msk = "255.255.255.0",
-            GW = "192.168.0.1",
-        };
     }
 
     private void Form1_Load(object sender, EventArgs e)
@@ -279,7 +272,7 @@ public partial class Form1 : Form, iATester.iCom
         servAct = ServiceAction.PatchSysInfo;
 
         JavaScriptSerializer serializer = new JavaScriptSerializer();
-        string sz_Jsonify = serializer.Serialize(ChangeDataArry);
+        string sz_Jsonify = serializer.Serialize(GetChangeDataArray());
 
         m_HttpRequest.SendPATCHRequest(Device.Account, Device.Password, GetURL(Device.IPAddress, Device.Port
                                     , WISE_RESTFUL_URI.net_basic.ToString()), sz_Jsonify);
@@ -301,16 +294,16 @@ public partial class Form1 : Form, iATester.iCom
         Print(new wResult() { Des = "VerifyItems" });
         bool chk = false;
         Print(new wResult() { Des = "MAC check [" + GetDataArry.MAC + "]", Res = chk ? ExeCaseRes.Fail : ExeCaseRes.Pass });
-        if (GetDataArry.DHCP != ChangeDataArry.DHCP) { chk = true; errorCnt++; }
+        if (GetDataArry.DHCP != GetChangeDataArray().DHCP) { chk = true; errorCnt++; }
         Print(new wResult() { Des = "DHCP check", Res = chk ? ExeCaseRes.Fail : ExeCaseRes.Pass });
         chk = false;
-        if (GetDataArry.IP != ChangeDataArry.IP) { chk = true; errorCnt++; }
+        if (GetDataArry.IP != GetChangeDataArray().IP || GetDataArry.IP == null) { chk = true; errorCnt++; }
         Print(new wResult() { Des = "IP check [" + GetDataArry.IP + "]", Res = chk ? ExeCaseRes.Fail : ExeCaseRes.Pass });
         chk = false;
-        if (GetDataArry.Msk != ChangeDataArry.Msk) { chk = true; errorCnt++; }
+        if (GetDataArry.Msk != GetChangeDataArray().Msk || GetDataArry.Msk == null) { chk = true; errorCnt++; }
         Print(new wResult() { Des = "Msk check [" + GetDataArry.Msk + "]", Res = chk ? ExeCaseRes.Fail : ExeCaseRes.Pass });
         chk = false;
-        if (GetDataArry.GW != ChangeDataArry.GW) { chk = true; errorCnt++; }
+        if (GetDataArry.GW != GetChangeDataArray().GW || GetDataArry.GW == null) { chk = true; errorCnt++; }
         Print(new wResult() { Des = "GW check [" + GetDataArry.GW + "]", Res = chk ? ExeCaseRes.Fail : ExeCaseRes.Pass });
 
         //Return the test result
@@ -320,6 +313,45 @@ public partial class Form1 : Form, iATester.iCom
 
         eStatus(this, new StatusEventArgs(iStatus.Completion));
     }
+    private SysChgData GetChangeDataArray()
+    {
+        ChangeDataArry = new SysChgData()
+        {
+            DHCP = 1,
+            IP = Device.IPAddress,
+            Msk = "255.255.255.0",
+            GW = "192.168.0.1",
+        };
+        ChangeInfraDataArry = new SysChgData()
+        {
+            DHCP = 0,
+            IP = Device.IPAddress,
+            Msk = "255.255.0.0",
+            GW = "192.168.0.1",
+        };
+
+        if (chkMod.Checked)
+            return ChangeDataArry;
+        else return ChangeInfraDataArry;
+    }
+    //private string SetDevIP()
+    //{
+    //    string ip = "";
+    //    if (Device.ModuleType == "WISE-4050")
+    //        ip = "192.168.0.66";
+    //    else if (Device.ModuleType == "WISE-4060")
+    //        ip = "192.168.0.67";
+    //    else if (Device.ModuleType == "WISE-4012")
+    //        ip = "192.168.0.68";
+    //    else if (Device.ModuleType == "WISE-4012E")
+    //        ip = "192.168.0.69";
+    //    else if (Device.ModuleType == "WISE-4051")
+    //        ip = "192.168.0.70";
+    //    else
+    //        ip = "192.168.0.99";
+
+    //    return ip;
+    //}
 
     #region ---- Update UI ----
     private void UpdateDevUIStatus(SysData data)

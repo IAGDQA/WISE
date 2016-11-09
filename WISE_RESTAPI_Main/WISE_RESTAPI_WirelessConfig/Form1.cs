@@ -29,6 +29,7 @@ public partial class Form1 : Form, iATester.iCom
 
     SysData GetDataArry = new SysData();
     SysChgData ChangeDataArry = new SysChgData();//change description content
+    SysChgData ChangeInfraDataArry = new SysChgData();//When in infra mode
     bool changeFlg = false;
     wResult ExeRes;
     //iATester
@@ -42,27 +43,6 @@ public partial class Form1 : Form, iATester.iCom
     public Form1()
     {
         InitializeComponent();
-
-        ChangeDataArry = new SysChgData()
-        {
-            Md = 0,
-            ISSID = "123456789012345678901234567890AB",//32
-            ISec = 2,
-            IKey = "123456789012345678901234567890123456789012345678901234567890ABC",//63
-            ISSID2 = "123456789012345678901234567890AB",//32
-            ISec2 = 2,
-            IKey2 = "123456789012345678901234567890123456789012345678901234567890ABC",//63
-            ASSID = "123456789012345678901234567890AB",//32
-            AHid = 1,
-            ACnty = 2,
-            ACh = 11,
-            ASec = 2,
-            AKey = "123456789012345678901234567890123456789012345678901234567890ABC",//63
-            DHCP = 1,
-            IP = "192.168.0.68",
-            Msk = "255.255.255.0",
-            GW = "192.168.0.1",
-        };
     }
 
     private void Form1_Load(object sender, EventArgs e)
@@ -292,7 +272,8 @@ public partial class Form1 : Form, iATester.iCom
         servAct = ServiceAction.PatchSysInfo;
 
         JavaScriptSerializer serializer = new JavaScriptSerializer();
-        string sz_Jsonify = serializer.Serialize(ChangeDataArry);
+        string sz_Jsonify = serializer.Serialize(GetChangeDataArray());
+        //string sz_Jsonify = serializer.Serialize(ChangeDataArry);
 
         m_HttpRequest.SendPATCHRequest(Device.Account, Device.Password, GetURL(Device.IPAddress, Device.Port
                                     , WISE_RESTFUL_URI.wlan_config.ToString()), sz_Jsonify);
@@ -314,56 +295,56 @@ public partial class Form1 : Form, iATester.iCom
         Print(new wResult() { Des = "VerifyItems" });
         bool chk = false;
         chk = false;
-        if (GetDataArry.Md != ChangeDataArry.Md) { chk = true; errorCnt++; }
+        if (GetDataArry.Md != GetChangeDataArray().Md) { chk = true; errorCnt++; }
         Print(new wResult() { Des = "Md  check", Res = chk ? ExeCaseRes.Fail : ExeCaseRes.Pass });
         chk = false;
-        if (GetDataArry.ISSID != ChangeDataArry.ISSID) { chk = true; errorCnt++; }
+        if (GetDataArry.ISSID != GetChangeDataArray().ISSID || GetDataArry.ISSID == null) { chk = true; errorCnt++; }
         Print(new wResult() { Des = "ISSID  check", Res = chk ? ExeCaseRes.Fail : ExeCaseRes.Pass });
         chk = false;
-        if (GetDataArry.ISec != ChangeDataArry.ISec) { chk = true; errorCnt++; }
+        if (GetDataArry.ISec != GetChangeDataArray().ISec) { chk = true; errorCnt++; }
         Print(new wResult() { Des = "ISec  check", Res = chk ? ExeCaseRes.Fail : ExeCaseRes.Pass });
         chk = false;
-        if (GetDataArry.IKey != ChangeDataArry.IKey) { chk = true; errorCnt++; }
+        if (GetDataArry.IKey != GetChangeDataArray().IKey || GetDataArry.IKey == null) { chk = true; errorCnt++; }
         Print(new wResult() { Des = "IKey  check", Res = chk ? ExeCaseRes.Fail : ExeCaseRes.Pass });
         chk = false;
-        if (GetDataArry.ISSID2 != ChangeDataArry.ISSID2) { chk = true; errorCnt++; }
+        if (GetDataArry.ISSID2 != GetChangeDataArray().ISSID2 || GetDataArry.ISSID2 == null) { chk = true; errorCnt++; }
         Print(new wResult() { Des = "ISSID2  check", Res = chk ? ExeCaseRes.Fail : ExeCaseRes.Pass });
         chk = false;
-        if (GetDataArry.ISec2 != ChangeDataArry.ISec2) { chk = true; errorCnt++; }
+        if (GetDataArry.ISec2 != GetChangeDataArray().ISec2) { chk = true; errorCnt++; }
         Print(new wResult() { Des = "ISec2  check", Res = chk ? ExeCaseRes.Fail : ExeCaseRes.Pass });
         chk = false;
-        if (GetDataArry.IKey2 != ChangeDataArry.IKey2) { chk = true; errorCnt++; }
+        if (GetDataArry.IKey2 != GetChangeDataArray().IKey2 || GetDataArry.IKey2 == null) { chk = true; errorCnt++; }
         Print(new wResult() { Des = "IKey2  check", Res = chk ? ExeCaseRes.Fail : ExeCaseRes.Pass });
         chk = false;
-        if (GetDataArry.ASSID != ChangeDataArry.ASSID) { chk = true; errorCnt++; }
+        if (GetDataArry.ASSID != GetChangeDataArray().ASSID || GetDataArry.ASSID == null) { chk = true; errorCnt++; }
         Print(new wResult() { Des = "ASSID  check", Res = chk ? ExeCaseRes.Fail : ExeCaseRes.Pass });
         chk = false;
-        if (GetDataArry.AHid != ChangeDataArry.AHid) { chk = true; errorCnt++; }
+        if (GetDataArry.AHid != GetChangeDataArray().AHid) { chk = true; errorCnt++; }
         Print(new wResult() { Des = "AHid  check", Res = chk ? ExeCaseRes.Fail : ExeCaseRes.Pass });
         chk = false;
-        if (GetDataArry.ACnty != ChangeDataArry.ACnty) { chk = true; errorCnt++; }
+        if (GetDataArry.ACnty != GetChangeDataArray().ACnty) { chk = true; errorCnt++; }
         Print(new wResult() { Des = "ACnty  check", Res = chk ? ExeCaseRes.Fail : ExeCaseRes.Pass });
         chk = false;
-        if (GetDataArry.ACh != ChangeDataArry.ACh) { chk = true; errorCnt++; }
+        if (GetDataArry.ACh != GetChangeDataArray().ACh) { chk = true; errorCnt++; }
         Print(new wResult() { Des = "ACh  check", Res = chk ? ExeCaseRes.Fail : ExeCaseRes.Pass });
         chk = false;
-        if (GetDataArry.ASec != ChangeDataArry.ASec) { chk = true; errorCnt++; }
+        if (GetDataArry.ASec != GetChangeDataArray().ASec) { chk = true; errorCnt++; }
         Print(new wResult() { Des = "ASec  check", Res = chk ? ExeCaseRes.Fail : ExeCaseRes.Pass });
         chk = false;
-        if (GetDataArry.AKey != ChangeDataArry.AKey) { chk = true; errorCnt++; }
+        if (GetDataArry.AKey != GetChangeDataArray().AKey || GetDataArry.AKey == null) { chk = true; errorCnt++; }
         Print(new wResult() { Des = "AKey  check", Res = chk ? ExeCaseRes.Fail : ExeCaseRes.Pass });
         //
         chk = false;
-        if (GetDataArry.DHCP != ChangeDataArry.DHCP) { chk = true; errorCnt++; }
+        if (GetDataArry.DHCP != GetChangeDataArray().DHCP) { chk = true; errorCnt++; }
         Print(new wResult() { Des = "DHCP check", Res = chk ? ExeCaseRes.Fail : ExeCaseRes.Pass });
         chk = false;
-        if (GetDataArry.IP != ChangeDataArry.IP) { chk = true; errorCnt++; }
+        if (GetDataArry.IP != GetChangeDataArray().IP || GetDataArry.IP == null) { chk = true; errorCnt++; }
         Print(new wResult() { Des = "IP check [" + GetDataArry.IP + "]", Res = chk ? ExeCaseRes.Fail : ExeCaseRes.Pass });
         chk = false;
-        if (GetDataArry.Msk != ChangeDataArry.Msk) { chk = true; errorCnt++; }
+        if (GetDataArry.Msk != GetChangeDataArray().Msk || GetDataArry.Msk == null) { chk = true; errorCnt++; }
         Print(new wResult() { Des = "Msk check [" + GetDataArry.Msk + "]", Res = chk ? ExeCaseRes.Fail : ExeCaseRes.Pass });
         chk = false;
-        if (GetDataArry.GW != ChangeDataArry.GW) { chk = true; errorCnt++; }
+        if (GetDataArry.GW != GetChangeDataArray().GW || GetDataArry.GW == null) { chk = true; errorCnt++; }
         Print(new wResult() { Des = "GW check [" + GetDataArry.GW + "]", Res = chk ? ExeCaseRes.Fail : ExeCaseRes.Pass });
 
         //Return the test result
@@ -373,6 +354,71 @@ public partial class Form1 : Form, iATester.iCom
 
         eStatus(this, new StatusEventArgs(iStatus.Completion));
     }
+    private SysChgData GetChangeDataArray()
+    {
+        ChangeDataArry = new SysChgData()
+        {
+            Md = 2,
+            ISSID = "123456789012345678901234567890AB",//32
+            ISec = 2,
+            IKey = "123456789012345678901234567890123456789012345678901234567890ABC",//63
+            ISSID2 = "123456789012345678901234567890AB",//32
+            ISec2 = 2,
+            IKey2 = "123456789012345678901234567890123456789012345678901234567890ABC",//63
+            ASSID = "123456789012345678901234567890AB",//32
+            AHid = 1,
+            ACnty = 2,
+            ACh = 11,
+            ASec = 2,
+            AKey = "123456789012345678901234567890123456789012345678901234567890ABC",//63
+            DHCP = 1,
+            IP = Device.IPAddress,
+            Msk = "255.255.255.0",
+            GW = "192.168.0.1",
+        };
+        ChangeInfraDataArry = new SysChgData()
+        {
+            Md = 0,
+            ISSID = "IAG_DQA_LAB",//32
+            ISec = 2,
+            IKey = "00000000",//63
+            ISSID2 = "abcd",//32
+            ISec2 = 0,
+            IKey2 = "abcd",//63
+            ASSID = "abcd",//32
+            AHid = 0,
+            ACnty = 0,
+            ACh = 11,
+            ASec = 0,
+            AKey = "",//63
+            DHCP = 0,
+            IP = Device.IPAddress,
+            Msk = "255.255.0.0",
+            GW = "192.168.0.1",
+        };
+
+        if (chkMod.Checked)
+            return ChangeDataArry;
+        else return ChangeInfraDataArry;
+    }
+    //private string SetDevIP()
+    //{
+    //    string ip = "";
+    //    if (Device.ModuleType == "WISE-4050")
+    //        ip = "192.168.0.66";
+    //    else if (Device.ModuleType == "WISE-4060")
+    //        ip = "192.168.0.67";
+    //    else if (Device.ModuleType == "WISE-4012")
+    //        ip = "192.168.0.68";
+    //    else if (Device.ModuleType == "WISE-4012E")
+    //        ip = "192.168.0.69";
+    //    else if (Device.ModuleType == "WISE-4051")
+    //        ip = "192.168.0.70";
+    //    else
+    //        ip = "192.168.0.99";
+
+    //    return ip;
+    //}
 
     #region ---- Update UI ----
     private void UpdateDevUIStatus(SysData data)

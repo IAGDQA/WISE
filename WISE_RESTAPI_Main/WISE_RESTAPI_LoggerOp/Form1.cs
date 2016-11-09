@@ -275,7 +275,9 @@ public partial class Form1 : Form, iATester.iCom
             };
         }
         else if (_typ.ToUpper() == "WISE-4050" 
-                    || _typ.ToUpper() == "WISE-4050")
+                    || _typ.ToUpper() == "WISE-4060"
+                    || _typ.ToUpper() == "WISE-4050/LAN"
+                    || _typ.ToUpper() == "WISE-4060/LAN")
         {
             ChangeDataArry = new SysChgData()
             {
@@ -304,6 +306,18 @@ public partial class Form1 : Form, iATester.iCom
             ChangeDataArry = new SysChgData()
             {
                 DIChM = 15,
+                DOChM = 3,
+                AIChM = 31,
+                AOChM = 0,
+                AILgD = 255,
+                AOLgD = 1,
+            };
+        }
+        else if (_typ.ToUpper() == "WISE-4010/LAN")
+        {
+            ChangeDataArry = new SysChgData()
+            {
+                DIChM = 0,
                 DOChM = 3,
                 AIChM = 31,
                 AOChM = 0,

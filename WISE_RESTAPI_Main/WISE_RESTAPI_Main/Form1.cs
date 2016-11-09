@@ -133,7 +133,6 @@ public partial class Form1 : Form, iATester.iCom
     }
     public void StartTest()//iATester
     {
-        textBox1.Text = dataHld.GetPara(Application.StartupPath);
         eStatus(this, new StatusEventArgs(iStatus.Running));
         button1.Text = HttpReq_Connet() ? "Connected" : "Disconnected";
     }
@@ -271,7 +270,8 @@ public partial class Form1 : Form, iATester.iCom
 
         typTxt.Text = Device.ModuleType;
         fwTxt.Text = Device.FirmwareVer;
-        dataHld.SavePara(Application.StartupPath, textBox1.Text);
+        if (!dataHld.SavePara(Application.StartupPath, textBox1.Text))
+            MessageBox.Show("Save para fail.");
         Device.IPAddress = textBox1.Text;
         return res;
     }

@@ -49,7 +49,7 @@ public partial class Form1 : Form, iATester.iCom
             CWDT = 1,
             PStr = 7968,
             PpG = 6689,
-            PWeb = 800,
+            PWeb = 80,
             EnSNTP = 1,
             SNTP1 = "123456789012345678901234567890123456789012345678901234567890"
                                 + "ABC",
@@ -330,10 +330,10 @@ public partial class Form1 : Form, iATester.iCom
         if (GetDataArry.EnSNTP != ChangeDataArry.EnSNTP) { chk = true; errorCnt++; }
         Print(new wResult() { Des = "EnSNTP check", Res = chk ? ExeCaseRes.Fail : ExeCaseRes.Pass });
         chk = false;
-        if (GetDataArry.SNTP1 != ChangeDataArry.SNTP1) { chk = true; errorCnt++; }
+        if (GetDataArry.SNTP1 != ChangeDataArry.SNTP1 || GetDataArry.SNTP1 == null) { chk = true; errorCnt++; }
         Print(new wResult() { Des = "SNTP1 check", Res = chk ? ExeCaseRes.Fail : ExeCaseRes.Pass });
         chk = false;
-        if (GetDataArry.SNTP2 != ChangeDataArry.SNTP2) { chk = true; errorCnt++; }
+        if (GetDataArry.SNTP2 != ChangeDataArry.SNTP2 || GetDataArry.SNTP2 == null) { chk = true; errorCnt++; }
         Print(new wResult() { Des = "SNTP2 check", Res = chk ? ExeCaseRes.Fail : ExeCaseRes.Pass });
         chk = false;
         if (GetDataArry.SNTPI != ChangeDataArry.SNTPI) { chk = true; errorCnt++; }

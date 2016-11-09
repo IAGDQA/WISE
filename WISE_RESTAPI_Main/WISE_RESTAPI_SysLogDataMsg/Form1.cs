@@ -27,7 +27,7 @@ public partial class Form1 : Form, iATester.iCom
     private DataGridViewCtrlAddDataRow m_DataGridViewCtrlAddDataRow;
     internal const int Max_Rows_Val = 65535;
 
-    SysData GetDataArry = new SysData();
+    LogMsgData GetDataArry = new LogMsgData();
     bool changeFlg = false;
     wResult ExeRes;
     //iATester
@@ -159,7 +159,7 @@ public partial class Form1 : Form, iATester.iCom
 
     private void OnGetData(string rawData)//Feedback Http request
     {
-        var Obj01 = AdvantechHttpWebUtility.ParserJsonToObj<SysData>(rawData);
+        var Obj01 = AdvantechHttpWebUtility.ParserJsonToObj<AllLogMsgData>(rawData);
         UpdateDevUIStatus(Obj01);
         //
         ExeRes.Res = ExeCaseRes.Pass; Print(ExeRes);
@@ -257,15 +257,15 @@ public partial class Form1 : Form, iATester.iCom
     }
 
     #region ---- Update UI ----
-    private void UpdateDevUIStatus(SysData data)
+    private void UpdateDevUIStatus(AllLogMsgData data)
     {
         try
         {
-            GetDataArry.UID = data.UID;
-            GetDataArry.MAC = data.MAC;
-            GetDataArry.PE = data.PE;
-            GetDataArry.TIM = data.TIM;
-            GetDataArry.Record = data.Record;
+            GetDataArry.UID = data.LogMsg[0].UID;
+            GetDataArry.MAC = data.LogMsg[0].MAC;
+            GetDataArry.PE = data.LogMsg[0].PE;
+            GetDataArry.TIM = data.LogMsg[0].TIM;
+            GetDataArry.Record = data.LogMsg[0].Record;
             
         }
         catch (Exception e)
@@ -278,8 +278,11 @@ public partial class Form1 : Form, iATester.iCom
         }
     }
     #endregion
-
-    public class SysData
+    public class AllLogMsgData
+    {
+        public LogMsgData[] LogMsg { get; set; }
+    }
+    public class LogMsgData
     {
         public int PE { get; set; }
         public string TIM { get; set; }

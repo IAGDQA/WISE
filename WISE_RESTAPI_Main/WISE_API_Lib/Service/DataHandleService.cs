@@ -9,7 +9,7 @@ namespace Service
     public class DataHandleService
     {
         string filename = "WISE_API_CONFIG.ini";
-
+        string folderPath = "";
         public DataHandleService()
         {
 
@@ -17,26 +17,26 @@ namespace Service
 
         public string GetPara(string _path)
         {
-            string resPath = "";
+            string resPath = "", folderPath = "";
 
-            if (File.Exists(_path + "\\" + filename))
+            string sPath = System.Reflection.Assembly.GetAssembly(this.GetType()).Location;
+            char delimiterChars = '\\';
+            string[] words = sPath.Split(delimiterChars);
+
+            for (int i = 0; i < words.Length - 1; i++)
             {
-                using (ExecuteIniClass IniFile = new ExecuteIniClass(Path.Combine(_path, filename)))
+                folderPath = folderPath + words[i] + "\\";
+            }
+
+            if (File.Exists(folderPath + "\\" + filename))
+            {
+                using (ExecuteIniClass IniFile = new ExecuteIniClass(Path.Combine(folderPath, filename)))
                 {
                     resPath = IniFile.getKeyValue("Dev", "IP");
                 }
             }
 
             return resPath;
-            //create new
-            //if (File.Exists(Application.StartupPath + "\\" + filename))
-            //{
-            //    using (ExecuteIniClass IniFile = new ExecuteIniClass(Path.Combine(Application.StartupPath, filename)))
-            //    {
-            //        GCtxtBox.Text = path = IniFile.getKeyValue("Dev", "Path");
-            //    }
-            //}
-
         }
 
         public bool SavePara(string _path, string _ip)
@@ -44,16 +44,23 @@ namespace Service
             bool res = true;
             try
             {
+                string sPath = System.Reflection.Assembly.GetAssembly(this.GetType()).Location;
+                folderPath = Path.GetDirectoryName(sPath);
+                //char delimiterChars = '\\';
+                //string[] words = sPath.Split(delimiterChars);
+
+                //for (int i = 0; i < words.Length - 1; i++)
+                //{
+                //    folderPath = folderPath + words[i] + "\\";
+                //}
                 //create new
-                if (!File.Exists(_path + "\\" + filename))
+                if (!File.Exists(folderPath + "\\" + filename))
                 {
-                    File.Create(_path + "\\" + filename);
-                    //MessageBox.Show("No file in path [" + Application.StartupPath + "\\" + filename + "] \n"
-                    //    + " Create new file");
+                    File.Create(folderPath + "\\" + filename);
                 }
 
                 //save para.
-                using (ExecuteIniClass IniFile = new ExecuteIniClass(Path.Combine(_path, filename)))
+                using (ExecuteIniClass IniFile = new ExecuteIniClass(Path.Combine(folderPath, filename)))
                 {
                     IniFile.setKeyValue("Dev", "IP", _ip);
                 }
@@ -65,6 +72,64 @@ namespace Service
 
             return res;
         }
+
+        public IniDataFmt GetGropPara(string _path)
+        {
+            IniDataFmt data = new IniDataFmt() { IP = "", Path = "", Browser = "" };
+            folderPath = "";
+            string sPath = System.Reflection.Assembly.GetAssembly(this.GetType()).Location;
+            char delimiterChars = '\\';
+            string[] words = sPath.Split(delimiterChars);
+
+            for (int i = 0; i < words.Length - 1; i++)
+            {
+                folderPath = folderPath + words[i] + "\\";
+            }
+
+            if (File.Exists(folderPath + "\\" + filename))
+            {
+                using (ExecuteIniClass IniFile = new ExecuteIniClass(Path.Combine(folderPath, filename)))
+                {
+                    data.IP = IniFile.getKeyValue("Dev", "IP");
+                    data.Path = IniFile.getKeyValue("Dev", "Path");
+                    data.Browser = IniFile.getKeyValue("Dev", "Browser");
+                }
+            }
+
+            return data;
+        }
+
+        public bool SaveGropPara(string _path, IniDataFmt _obj)
+        {
+            bool res = true;
+            try
+            {
+                //string sPath = System.Reflection.Assembly.GetAssembly(this.GetType()).Location;
+                //create new
+                if (!File.Exists(folderPath + "\\" + filename))
+                    File.Create(folderPath + "\\" + filename);
+
+                //save para.
+                using (ExecuteIniClass IniFile = new ExecuteIniClass(Path.Combine(folderPath, filename)))
+                {
+                    IniFile.setKeyValue("Dev", "IP", _obj.IP);
+                    IniFile.setKeyValue("Dev", "Path", _obj.Path);
+                    IniFile.setKeyValue("Dev", "Browser", _obj.Browser);
+                }
+            }
+            catch (Exception ex)
+            {
+                res = false;
+            }
+
+            return res;
+        }
+    }
+    public class IniDataFmt
+    {
+        public string IP { get; set; }
+        public string Path { get; set; }
+        public string Browser { get; set; }
     }
 
     public class ExecuteIniClass : IDisposable
