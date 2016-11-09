@@ -1,0 +1,8 @@
+D:\Advantech\2016\DQA_New Progrm Project\WISE_AutoIOFun_Test\WISE_AutoIO_AI_FunTest\obj\Debug\WISE_AutoIO_AI_FunTest.Properties.Resources.resources
+D:\Advantech\2016\DQA_New Progrm Project\WISE_AutoIOFun_Test\WISE_AutoIO_AI_FunTest\obj\Debug\WISE_AutoIO_AI_FunTest.WISE_AutoIO_AI_FunTest.resources
+D:\Advantech\2016\DQA_New Progrm Project\WISE_AutoIOFun_Test\WISE_AutoIO_AI_FunTest\obj\Debug\WISE_AutoIO_AI_FunTest.csproj.GenerateResource.Cache
+D:\Advantech\2016\DQA_New Progrm Project\WISE_AutoIOFun_Test\BuildDLL\WISE_AutoIO_AI_FunTest.exe
+D:\Advantech\2016\DQA_New Progrm Project\WISE_AutoIOFun_Test\BuildDLL\WISE_AutoIO_AI_FunTest.pdb
+D:\Advantech\2016\DQA_New Progrm Project\WISE_AutoIOFun_Test\WISE_AutoIO_AI_FunTest\obj\Debug\WISE_AutoIO_AI_FunTest.exe
+D:\Advantech\2016\DQA_New Progrm Project\WISE_AutoIOFun_Test\WISE_AutoIO_AI_FunTest\obj\Debug\WISE_AutoIO_AI_FunTest.pdb
+D:\Advantech\2016\DQA_New Progrm Project\WISE_AutoIOFun_Test\WISE_AutoIO_AI_FunTest\obj\Debug\WISE_AutoIO_AI_FunTest.csprojResolveAssemblyReference.cache

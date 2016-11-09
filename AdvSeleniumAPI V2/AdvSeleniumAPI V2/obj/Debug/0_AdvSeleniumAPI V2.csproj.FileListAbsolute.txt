@@ -1,0 +1,4 @@
+D:\Advantech\2016\DQA_New Progrm Project\AdvSeleniumAPI V2\BuildDLL\AdvSeleniumAPI V2.dll
+D:\Advantech\2016\DQA_New Progrm Project\AdvSeleniumAPI V2\BuildDLL\AdvSeleniumAPI V2.pdb
+D:\Advantech\2016\DQA_New Progrm Project\AdvSeleniumAPI V2\AdvSeleniumAPI V2\obj\Debug\AdvSeleniumAPI V2.dll
+D:\Advantech\2016\DQA_New Progrm Project\AdvSeleniumAPI V2\AdvSeleniumAPI V2\obj\Debug\AdvSeleniumAPI V2.pdb

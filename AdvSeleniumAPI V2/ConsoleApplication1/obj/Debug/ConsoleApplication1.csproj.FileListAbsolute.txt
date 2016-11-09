@@ -1,0 +1,11 @@
+D:\Advantech\2016\DQA_New Progrm Project\AdvSeleniumAPI V2\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+D:\Advantech\2016\DQA_New Progrm Project\AdvSeleniumAPI V2\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+D:\Advantech\2016\DQA_New Progrm Project\AdvSeleniumAPI V2\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+D:\Advantech\2016\DQA_New Progrm Project\AdvSeleniumAPI V2\ConsoleApplication1\bin\Debug\AdvSeleniumAPI V2.dll
+D:\Advantech\2016\DQA_New Progrm Project\AdvSeleniumAPI V2\ConsoleApplication1\bin\Debug\ThoughtWorks.Selenium.Core.dll
+D:\Advantech\2016\DQA_New Progrm Project\AdvSeleniumAPI V2\ConsoleApplication1\bin\Debug\AdvSeleniumAPI V2.pdb
+D:\Advantech\2016\DQA_New Progrm Project\AdvSeleniumAPI V2\ConsoleApplication1\bin\Debug\ThoughtWorks.Selenium.Core.pdb
+D:\Advantech\2016\DQA_New Progrm Project\AdvSeleniumAPI V2\ConsoleApplication1\bin\Debug\ThoughtWorks.Selenium.Core.xml
+D:\Advantech\2016\DQA_New Progrm Project\AdvSeleniumAPI V2\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
+D:\Advantech\2016\DQA_New Progrm Project\AdvSeleniumAPI V2\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+D:\Advantech\2016\DQA_New Progrm Project\AdvSeleniumAPI V2\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb

@@ -1,0 +1,10 @@
+D:\Advantech\2016\DQA_New Progrm Project\AdvSeleniumAPI V2\AdvSeleniumAPI V2\bin\Debug\AdvSeleniumAPI V2.dll
+D:\Advantech\2016\DQA_New Progrm Project\AdvSeleniumAPI V2\AdvSeleniumAPI V2\bin\Debug\AdvSeleniumAPI V2.pdb
+D:\Advantech\2016\DQA_New Progrm Project\AdvSeleniumAPI V2\AdvSeleniumAPI V2\bin\Debug\System.Net.Http.dll
+D:\Advantech\2016\DQA_New Progrm Project\AdvSeleniumAPI V2\AdvSeleniumAPI V2\bin\Debug\ThoughtWorks.Selenium.Core.dll
+D:\Advantech\2016\DQA_New Progrm Project\AdvSeleniumAPI V2\AdvSeleniumAPI V2\bin\Debug\ThoughtWorks.Selenium.Core.pdb
+D:\Advantech\2016\DQA_New Progrm Project\AdvSeleniumAPI V2\AdvSeleniumAPI V2\bin\Debug\ThoughtWorks.Selenium.Core.xml
+D:\Advantech\2016\DQA_New Progrm Project\AdvSeleniumAPI V2\BuildDLL\AdvSeleniumAPI V2.dll
+D:\Advantech\2016\DQA_New Progrm Project\AdvSeleniumAPI V2\BuildDLL\AdvSeleniumAPI V2.pdb
+D:\Advantech\2016\DQA_New Progrm Project\AdvSeleniumAPI V2\AdvSeleniumAPI V2\obj\Debug\AdvSeleniumAPI V2.dll
+D:\Advantech\2016\DQA_New Progrm Project\AdvSeleniumAPI V2\AdvSeleniumAPI V2\obj\Debug\AdvSeleniumAPI V2.pdb
